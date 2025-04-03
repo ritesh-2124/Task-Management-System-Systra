@@ -1,0 +1,5 @@
+# Ignore node_modules and .pnp directories
+/node_modules
+/.pnp
+.env   
+package-lock.json
