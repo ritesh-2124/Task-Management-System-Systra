@@ -7,7 +7,8 @@ exports.register = async (req, res) => {
   try {
     const { username, email, password } = req.body;
     const user = await User.create({ username, email, password });
-    res.status(201).json({ message: "User registered", user: { id: user.id, email: user.email } });
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+    res.status(201).json({ message: "User registered", user: { token : token} });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -21,7 +22,7 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '7d' }); 
     res.json({ token });
   } catch (err) {
     res.status(500).json({ error: err.message });
