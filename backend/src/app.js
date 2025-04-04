@@ -4,6 +4,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 app.use(express.json());
+const cors = require('cors');
+app.use(cors());
+
 
 const userRoutes = require('./routes/userRoutes');
 const taskRoutes = require('./routes/taskRoutes');
