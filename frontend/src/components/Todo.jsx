@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { Edit, Delete } from '@mui/icons-material';
 
-const API = 'http://localhost:5000/api';
+const API = 'https://task-management-system-systra-2.onrender.com/api';
 
 const Todo = () => {
   const { user, logout } = useAuth();
