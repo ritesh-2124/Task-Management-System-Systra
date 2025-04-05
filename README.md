@@ -1,6 +1,6 @@
 # 📝 Task Management System
 
-A full-stack task management system built with **Node.js**, **Express**, **MySQL**, **React.js**, and **Material UI**. It allows users to sign up, log in, and manage their tasks efficiently with due dates, status updates, and pagination.
+A full-stack task management system built with **Node.js**, **Express**, **PostgreSQL**, **React.js**, and **Material UI**. It allows users to sign up, log in, and manage their tasks efficiently with due dates, status updates, and pagination.
 
 ---
 
@@ -9,7 +9,7 @@ A full-stack task management system built with **Node.js**, **Express**, **MySQL
 - ✅ User Authentication (JWT-based)
 - ✅ Create, update, delete tasks
 - ✅ View tasks with pagination
-- ✅ Filter and sort tasks by **status** and **due date**
+- ✅ Filter and sort tasks by **status** ,  **Created date** and **due date**
 - ✅ Responsive UI built with **Material UI**
 - ✅ Secure API endpoints
 - ✅ Input validations and error handling
@@ -19,10 +19,10 @@ A full-stack task management system built with **Node.js**, **Express**, **MySQL
 ## 🛠️ Tech Stack
 
 | Frontend       | Backend         | Database |
-|----------------|------------------|-----------|
-| React.js       | Node.js          | MySQL     |
-| Material UI    | Express.js       | Sequelize |
-| Axios          | JWT Auth         |           |
+|----------------|------------------|------------|
+| React.js       | Node.js          | PostgreSQL |
+| Material UI    | Express.js       | Sequelize  |
+| Axios          | JWT Auth         |            |
 
 ---
 
@@ -50,8 +50,8 @@ Create a `.env` file inside `/backend`:
 PORT=5000
 JWT_SECRET=your_jwt_secret
 DB_NAME=your_db_name
-DB_USER=your_mysql_user
-DB_PASSWORD=your_mysql_password
+DB_USER=your_PostgreSQL_user
+DB_PASSWORD=your_PostgreSQL_password
 DB_HOST=localhost
 ```
 
@@ -88,10 +88,13 @@ DB_HOST=localhost
 ---
 
 ## 📷 Screenshots
-<img width="1709" alt="Screenshot 2025-04-05 at 10 28 25 PM" src="https://github.com/user-attachments/assets/efef23fa-7ea5-4309-b3c1-ede5e13d08e7" />
-
+### Ragister Page
 <img width="1709" alt="Screenshot 2025-04-05 at 10 28 35 PM" src="https://github.com/user-attachments/assets/a8832f4b-155f-464e-9021-beee5078a25c" />
 
+### Login Page
+<img width="1709" alt="Screenshot 2025-04-05 at 10 28 25 PM" src="https://github.com/user-attachments/assets/efef23fa-7ea5-4309-b3c1-ede5e13d08e7" />
+
+### Task Page
 <img width="1709" alt="Screenshot 2025-04-05 at 10 29 10 PM" src="https://github.com/user-attachments/assets/c3aa6664-4111-4974-be81-4d01f3f6cc2c" />
 
 
@@ -104,13 +107,16 @@ DB_HOST=localhost
 ```
 .
 ├── backend
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── middleware/
-│   ├── config/
-│   └── server.js
-│
+│   ├── src
+│   │   ├── config/
+│   │   ├── controllers/
+│   │   ├── middleware/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   ├── utils/
+│   │   ├── server.js
+│   │   └── app.js
+
 ├── frontend
 │   ├── src/
 │   │   ├── components/
@@ -123,8 +129,7 @@ DB_HOST=localhost
 ## 🧹 Future Improvements
 
 - Add due date reminders
-- Add drag-and-drop for task sorting
-
+- Send a mail if user is missing a due date
 ---
 
 ## 🤝 Author
