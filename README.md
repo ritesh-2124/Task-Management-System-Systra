@@ -55,16 +55,6 @@ DB_PASSWORD=your_mysql_password
 DB_HOST=localhost
 ```
 
-Then run migrations and start the server:
-
-```bash
-npx sequelize db:create
-npx sequelize db:migrate
-npm start
-```
-
----
-
 ### 3. Setup Frontend
 
 ```bash
