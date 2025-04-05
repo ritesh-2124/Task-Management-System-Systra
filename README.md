@@ -2,6 +2,10 @@
 
 A full-stack task management system built with **Node.js**, **Express**, **PostgreSQL**, **React.js**, and **Material UI**. It allows users to sign up, log in, and manage their tasks efficiently with due dates, status updates, and pagination.
 
+## 🚀 Live Demo
+
+🌐 Live URL: [https://task-management-system-systra.vercel.app/login](https://task-management-system-systra.vercel.app/login)
+
 ---
 
 ## 🚀 Features
@@ -122,6 +126,8 @@ DB_HOST=localhost
 │   │   ├── components/
 │   │   └── context/
 │   └── App.js
+├── Postman Collection
+├── DB structure 
 ```
 
 ---
