@@ -61,23 +61,25 @@ exports.createTask = async (req, res) => {
   exports.updateTask = async (req, res) => {
     try {
       const { id } = req.params;
-      const { status } = req.body;
+      const { status , description , due_date , title } = req.body;
   
-      if (!status) {
-        return res.status(400).json({ message: "Status field is required." });
+      if (!id) {
+        return res.status(400).json({ message: "Task ID is required." });
       }
   
+      if(status){
       const allowedStatuses = ['To Do', 'In Progress', 'Completed'];
       if (!allowedStatuses.includes(status)) {
         return res.status(400).json({ message: "Invalid status. Allowed values: To Do, In Progress, Completed." });
       }
+    }
   
       const task = await Task.findByPk(id);
       if (!task) {
         return res.status(404).json({ message: "Task not found" });
       }
   
-      await task.update({ status });
+      await task.update({ status , description , due_date , title });
       res.json(task);
     } catch (error) {
       res.status(500).json({ error: "Failed to update task." });

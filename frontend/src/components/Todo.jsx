@@ -76,7 +76,10 @@ const Todo = () => {
   const updateTodo = async () => {
     if (!editId) return;
     await axios.put(`${API}/tasks/${editId}`, {
-      status
+        status,
+        description,
+        due_date: dueDate,
+        title
     }, {
       headers: { Authorization: `Bearer ${user.token}` },
     });
@@ -95,6 +98,10 @@ const Todo = () => {
     setIsEditing(true);
     setEditId(todo.id);
     setStatus(todo.status);
+    setEditId(todo.id);
+    setTitle(todo.title);
+    setDescription(todo.description);
+    setDueDate(todo.due_date.split('T')[0]);
   };
 
   useEffect(() => {
@@ -104,11 +111,23 @@ const Todo = () => {
   return (
     <Container maxWidth="md">
       <Box display="flex" justifyContent="space-between" alignItems="center" mt={4} mb={2}>
-        <Typography variant="h5">Task Manager</Typography>
+        <Typography variant="h5">Hello,what's up Today</Typography>
+        <Typography variant="body1">Last Updated</Typography>
+        <Typography variant="body1">
+            {new Date().toLocaleString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            })}
+        </Typography>
+    
         <Button onClick={logout} variant="outlined" color="secondary">Logout</Button>
       </Box>
-
-      {/* Filter + Sort Controls */}
       <Box display="flex" gap={2} mb={3}>
         <TextField
           select label="Filter by Status" value={statusFilter}
@@ -139,13 +158,13 @@ const Todo = () => {
 
       {/* Add / Edit Form */}
       <Box display="flex" gap={2} mb={3} flexWrap="wrap">
-        {!isEditing && (
+        {/* {!isEditing && ( */}
           <>
             <TextField label="Title" value={title} onChange={e => setTitle(e.target.value)} fullWidth />
             <TextField label="Description" value={description} onChange={e => setDescription(e.target.value)} fullWidth />
             <TextField type="date" label="Due Date" value={dueDate} onChange={e => setDueDate(e.target.value)} InputLabelProps={{ shrink: true }} fullWidth />
           </>
-        )}
+        {/* )} */}
         <TextField select label="Status" value={status} onChange={e => setStatus(e.target.value)} fullWidth>
           <MenuItem value="To Do">To Do</MenuItem>
           <MenuItem value="In Progress">In Progress</MenuItem>
@@ -172,6 +191,7 @@ const Todo = () => {
               <TableCell><strong>Description</strong></TableCell>
               <TableCell><strong>Status</strong></TableCell>
               <TableCell><strong>Due Date</strong></TableCell>
+                <TableCell><strong>Created At</strong></TableCell>
               <TableCell align="center"><strong>Actions</strong></TableCell>
             </TableRow>
           </TableHead>
@@ -182,6 +202,7 @@ const Todo = () => {
                 <TableCell>{todo.description}</TableCell>
                 <TableCell>{todo.status}</TableCell>
                 <TableCell>{todo.due_date?.split('T')[0]}</TableCell>
+                <TableCell>{todo.createdAt?.split('T')[0]}</TableCell>
                 <TableCell align="center">
                   <IconButton onClick={() => handleEdit(todo)} color="primary">
                     <Edit />
