@@ -31,8 +31,8 @@ A full-stack task management system built with **Node.js**, **Express**, **MySQL
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/task-management-system.git
-cd task-management-system
+git clone https://github.com/ritesh-2124/Task-Management-System-Systra.git
+cd Task-Management-System-Systra
 ```
 
 ---
@@ -98,8 +98,14 @@ DB_HOST=localhost
 ---
 
 ## 📷 Screenshots
+<img width="1709" alt="Screenshot 2025-04-05 at 10 28 25 PM" src="https://github.com/user-attachments/assets/efef23fa-7ea5-4309-b3c1-ede5e13d08e7" />
 
-> _You can add screenshots or a GIF here showing login, adding task, etc._
+<img width="1709" alt="Screenshot 2025-04-05 at 10 28 35 PM" src="https://github.com/user-attachments/assets/a8832f4b-155f-464e-9021-beee5078a25c" />
+
+<img width="1709" alt="Screenshot 2025-04-05 at 10 29 10 PM" src="https://github.com/user-attachments/assets/c3aa6664-4111-4974-be81-4d01f3f6cc2c" />
+
+
+
 
 ---
 
@@ -128,14 +134,12 @@ DB_HOST=localhost
 
 - Add due date reminders
 - Add drag-and-drop for task sorting
-- Allow file attachments
-- Role-based access
 
 ---
 
 ## 🤝 Author
 
-Made with ❤️ by **Ritesh Yadav**
+Made by **Ritesh Yadav**
 
-> [ritesh.yadav@example.com](mailto:ritesh.yadav@example.com)  
-> GitHub: [@riteshyadav](https://github.com/riteshyadav)
+> [riteshyad222000@gmail.com](mailto:riteshyad222000@gmail.com)  
+> GitHub: [@ritesh-2124](https://github.com/ritesh-2124)
