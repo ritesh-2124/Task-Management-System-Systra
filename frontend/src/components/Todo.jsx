@@ -25,10 +25,11 @@ const Todo = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false); 
+  const[fetchLoading, setFetchLoading] = useState(false);
 
   const fetchTodos = async (page = 1) => {
     try {
-      setLoading(true);
+      setFetchLoading(true);
       const query = new URLSearchParams({ page, limit: 5, status: statusFilter, sortBy, order });
       const res = await axios.get(`${API}/tasks?${query.toString()}`, {
         headers: { Authorization: `Bearer ${user.token}` },
@@ -39,7 +40,7 @@ const Todo = () => {
     } catch (err) {
       console.error('Error fetching tasks:', err);
     } finally {
-      setLoading(false);
+        setFetchLoading(false);
     }
   };
 
@@ -124,27 +125,6 @@ const Todo = () => {
         </Typography>
         <Button onClick={logout} variant="outlined" color="secondary">Logout</Button>
       </Box>
-
-      {/* Filters */}
-      <Box display="flex" gap={2} mb={3}>
-        <TextField select label="Filter by Status" value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} fullWidth>
-          <MenuItem value="">All</MenuItem>
-          <MenuItem value="To Do">To Do</MenuItem>
-          <MenuItem value="In Progress">In Progress</MenuItem>
-          <MenuItem value="Completed">Completed</MenuItem>
-        </TextField>
-        <TextField select label="Sort by" value={sortBy} onChange={(e) => setSortBy(e.target.value)} fullWidth>
-          <MenuItem value="due_date">Due Date</MenuItem>
-          <MenuItem value="createdAt">Created At</MenuItem>
-          <MenuItem value="title">Title</MenuItem>
-        </TextField>
-        <TextField select label="Order" value={order} onChange={(e) => setOrder(e.target.value)} fullWidth>
-          <MenuItem value="ASC">ASC</MenuItem>
-          <MenuItem value="DESC">DESC</MenuItem>
-        </TextField>
-        <Button variant="contained" onClick={() => fetchTodos(1)}>Apply</Button>
-      </Box>
-
       {/* Add/Edit Task */}
       <Box display="flex" gap={2} mb={3} flexWrap="wrap">
         <TextField label="Title" value={title} onChange={e => setTitle(e.target.value)} fullWidth />
@@ -177,9 +157,29 @@ const Todo = () => {
 )}
 
       </Box>
+          {/* Filters */}
+      <Box display="flex" gap={2} mb={3}>
+        <TextField select label="Filter by Status" value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)} fullWidth>
+          <MenuItem value="">All</MenuItem>
+          <MenuItem value="To Do">To Do</MenuItem>
+          <MenuItem value="In Progress">In Progress</MenuItem>
+          <MenuItem value="Completed">Completed</MenuItem>
+        </TextField>
+        <TextField select label="Sort by" value={sortBy} onChange={(e) => setSortBy(e.target.value)} fullWidth>
+          <MenuItem value="due_date">Due Date</MenuItem>
+          <MenuItem value="createdAt">Created At</MenuItem>
+          <MenuItem value="title">Title</MenuItem>
+        </TextField>
+        <TextField select label="Order" value={order} onChange={(e) => setOrder(e.target.value)} fullWidth>
+          <MenuItem value="ASC">ASC</MenuItem>
+          <MenuItem value="DESC">DESC</MenuItem>
+        </TextField>
+        <Button variant="contained" onClick={() => fetchTodos(1)}>Apply</Button>
+      </Box>
+
 
       {/* Loader */}
-      {loading ? (
+      {fetchLoading ? (
         <Box display="flex" justifyContent="center" mt={5}>
           <CircularProgress />
         </Box>
