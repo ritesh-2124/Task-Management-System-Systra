@@ -84,6 +84,7 @@ The app will run at [http://localhost:3000](http://localhost:3000)
 PORT=5000
 JWT_SECRET=mySuperSecretKey
 DB_NAME=task_db
+## table will automatically get created , only need to add db_name
 DB_USER=root
 DB_PASSWORD=password123
 DB_HOST=localhost
@@ -127,7 +128,6 @@ DB_HOST=localhost
 │   │   └── context/
 │   └── App.js
 ├── Postman Collection
-├── DB structure 
 ```
 
 ---
