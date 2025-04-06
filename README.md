@@ -46,9 +46,11 @@ cd Task-Management-System-Systra
 ```bash
 cd backend
 npm install
+cd src
+node server.js
 ```
 
-Create a `.env` file inside `/backend`:
+Create a `.env` file inside `/backend/src`:
 
 ```env
 PORT=5000
